@@ -21,7 +21,7 @@ class SmoothScrollArea(QScrollArea):
         elif event.type() == QEvent.Type.MouseMove and self.scrolling:
             dx = event.position().x() - self.last_pos.x()
             self.last_pos = event.position().toPoint()
-            self.horizontalScrollBar().setValue(self.horizontalScrollBar().value() - dx)
+            self.horizontalScrollBar().setValue(int(self.horizontalScrollBar().value() - dx))
             return True
         return super().eventFilter(obj, event)
 

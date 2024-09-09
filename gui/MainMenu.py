@@ -8,13 +8,15 @@ from gui.SmoothScrollArea import SmoothScrollArea
 from gui.GameButton import GameButton
 from gui.GameScreen import GameScreen
 
+from util.sound import load_sound, play_sound
+
 class MainMenu(QWidget):
     def __init__(self):
         super().__init__()
         self.games = self.load_games()
         self.current_game = None
         self.initUI()
-
+        load_sound("game_select", "presets/select.wav")
 
     def load_games(self):
         games = []
@@ -61,7 +63,7 @@ class MainMenu(QWidget):
         self.game_description.setStyleSheet("font-size: 20px; color: #34495e; padding: 20px;")  # Increased font size
         thumbnail_and_description.addWidget(self.game_description)
         
-        game_info_layout.addLayout(thumbnail_and_description)
+        game_info_layout.addLayout(thumbnail_and_description, 10)
         main_layout.addWidget(self.game_info, 1)
 
         # Add spacing between game info and carousel
@@ -127,7 +129,7 @@ class MainMenu(QWidget):
         """)
         self.start_button.clicked.connect(self.start_game)
         self.start_button.hide()
-        game_info_layout.addWidget(self.start_button, alignment=Qt.AlignmentFlag.AlignCenter)
+        game_info_layout.addWidget(self.start_button, alignment=Qt.AlignmentFlag.AlignCenter, stretch=1)
 
 
     def update_game_info(self, game):
@@ -136,7 +138,7 @@ class MainMenu(QWidget):
         self.game_thumbnail.setPixmap(QPixmap(game.get_thumbnail()).scaled(640, 360, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation))
         self.game_description.setText(game.get_description())
         self.start_button.show()
-
+        play_sound("game_select")
     def start_game(self):
         if self.current_game:
             self.game_screen = GameScreen(self.current_game, self)
