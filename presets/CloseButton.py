@@ -8,16 +8,17 @@ class CloseButton(QPushButton):
         self.initUI()
 
     def initUI(self):
-        self.setIcon(QIcon('path/to/close_icon.png'))  # Replace with path to your close icon
-        self.setIconSize(QSize(32, 32))
-        self.setFixedSize(40, 40)
+        # <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Pixel perfect - Flaticon</a>
+        self.setIcon(QIcon('presets/close.png'))
+        self.setIconSize(QSize(40, 40))
+        self.setFixedSize(50, 50)
         self.setStyleSheet("""
             QPushButton {
-                background-color: rgba(255, 255, 255, 50);
+                background-color: rgba(0, 0, 0, 120);
                 border: none;
                 border-radius: 20px;
             }
             QPushButton:hover {
-                background-color: rgba(255, 255, 255, 100);
+                background-color: rgba(0, 0, 0, 180);
             }
         """)

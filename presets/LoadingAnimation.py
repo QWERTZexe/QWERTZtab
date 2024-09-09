@@ -6,7 +6,7 @@ class LoadingAnimation(QWidget):
     def __init__(self, duration=5000):
         super().__init__()
         self.duration = duration
-        self.initUI("presets/Loading.gif")
+        self.initUI("presets/loading.gif")
 
     def initUI(self, gif_path):
         self.setStyleSheet("background-color: black;")
