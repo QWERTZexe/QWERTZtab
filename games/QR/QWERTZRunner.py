@@ -54,7 +54,7 @@ class QWERTZRunner(QWidget):
 
         # Remove off-screen objects
         self.obstacles = [obs for obs in self.obstacles if obs['x'] > -50]
-        self.platforms = [plat for plat in self.platforms if plat['x'] > -100]
+        self.platforms = [plat for plat in self.platforms if plat['x'] > -250]
 
         # Spawn new obstacles and platforms
         print(f"Width: {self.width()}, last_obstacle_x: {self.last_obstacle_x}")
